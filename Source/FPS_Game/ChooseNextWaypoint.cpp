@@ -1,16 +1,13 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "FPS_Game.h"
-#include "../Public/ChooseNextWaypoint.h"
+#include "ChooseNextWaypoint.h"
 #include "AIController.h"
-#include "../Public/PatrolRoute.h"
+#include "PatrolRoute.h"
 #include "BehaviorTree/BlackboardComponent.h"
 
 EBTNodeResult::Type UChooseNextWaypoint::ExecuteTask(UBehaviorTreeComponent & OwnerComp, uint8 * NodeMemory)
 {
-
-	// TODO protect against empty patrol routes
-
 
 	// get the patrol points
 	//auto AIController = OwnerComp.GetAIOwner();
@@ -18,7 +15,7 @@ EBTNodeResult::Type UChooseNextWaypoint::ExecuteTask(UBehaviorTreeComponent & Ow
 	auto ControlledPawn = OwnerComp.GetAIOwner()->GetPawn();
 	auto PatrolRoute = ControlledPawn->FindComponentByClass<UPatrolRoute>();
 
-	if (!ensure(PartolRoute)) { return EBTNodeResult::Failed; }
+	if (!ensure(PatrolRoute)) { return EBTNodeResult::Failed; }
 
 	// warn about empty patrol routes
 	auto PatrolPoints = PatrolRoute->GetPatrolPoints();
