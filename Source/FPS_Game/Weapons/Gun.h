@@ -48,6 +48,7 @@ public:
 	FVector GunOffset;
 
 	/** Fires a projectile. */
+	UFUNCTION(BlueprintCallable, Category = "Input")
 	void OnFire();
 
 	
